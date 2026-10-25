@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halibut Harpoon Wiki-Verified Checklist | Roblox Fisch</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            deep: {
+              bg: '#080d1a',
+              card: '#0f172a',
+              hover: '#172544',
+              border: '#1e293b',
+              cyan: '#00f3ff',
+              emerald: '#10b981',
+              amber: '#f59e0b',
+              purple: '#b026ff',
+            }
+          },
+          boxShadow: {
+            'glow-cyan': '0 0 15px -3px rgba(0, 243, 255, 0.3)',
+            'glow-pill': '0 0 10px -2px rgba(0, 243, 255, 0.25)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #080d1a; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #00f3ff; }
+    .rod-link-pill {
+      transition: all 0.15s ease-in-out;
+    }
+    .rod-link-pill:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px -2px rgba(0, 243, 255, 0.35);
+      border-color: rgba(0, 243, 255, 0.7);
+    }
+    .mutation-link:hover {
+      text-decoration-line: underline;
+      text-decoration-color: #00f3ff;
+      text-underline-offset: 3px;
+    }
+  </style>
+</head>
+<body class="bg-deep-bg text-slate-100 min-h-screen font-sans selection:bg-deep-cyan/20 selection:text-deep-cyan pb-20">
+
+  <!-- TOP HEADER -->
+  <header class="border-b border-deep-border bg-deep-card/95 backdrop-blur sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4 py-3.5 sm:py-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+        <div>
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-deep-cyan/15 text-deep-cyan border border-deep-cyan/30 uppercase tracking-wider">
+              Wiki-Direct Connected
+            </span>
+            <span class="text-xs text-slate-400 font-mono">Dr. Monty Quests 2 & 3 • Lv 1000+</span>
+          </div>
+          <h1 class="text-xl sm:text-2xl font-bold text-white tracking-tight mt-1 flex items-center gap-2">
+            <i data-lucide="crosshair" class="w-6 h-6 text-deep-cyan"></i>
+            Halibut Harpoon Interactive Checklist
+          </h1>
+          <p class="text-xs text-slate-400 mt-0.5">
+            Click any rod or mutation to jump straight to its <strong class="text-slate-200">fischipedia.org</strong> wiki dossier.
+          </p>
+        </div>
+
+        <!-- Wiki Directories Quick Nav & Batch Controls -->
+        <div class="flex flex-wrap items-center gap-2 self-start sm:self-center shrink-0">
+          <!-- External Wiki Directory Hubs -->
+          <a href="https://fischipedia.org/wiki/Fishing_Rods" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 rounded-lg bg-deep-bg hover:bg-slate-800 border border-deep-border hover:border-deep-cyan/40 text-xs font-mono font-semibold text-slate-300 hover:text-white transition flex items-center gap-1.5" title="Open Fischipedia All Fishing Rods Guide">
+            <i data-lucide="book-open" class="w-3.5 h-3.5 text-deep-cyan"></i>
+            <span>Rods Wiki</span>
+            <i data-lucide="external-link" class="w-3 h-3 text-slate-500"></i>
+          </a>
+          <a href="https://fischipedia.org/wiki/Dr._Monty" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 rounded-lg bg-deep-bg hover:bg-slate-800 border border-deep-border hover:border-deep-cyan/40 text-xs font-mono font-semibold text-slate-300 hover:text-white transition flex items-center gap-1.5" title="Open Dr. Monty / Monty's Lab Wiki Article">
+            <i data-lucide="flask-conical" class="w-3.5 h-3.5 text-deep-purple"></i>
+            <span>Dr. Monty</span>
+            <i data-lucide="external-link" class="w-3 h-3 text-slate-500"></i>
+          </a>
+
+          <button onclick="copyMissingToClipboard()" class="px-2.5 py-1.5 rounded-lg bg-deep-cyan/15 hover:bg-deep-cyan/25 border border-deep-cyan/30 text-xs font-semibold text-deep-cyan transition flex items-center gap-1.5" title="Copy unchecked items to clipboard">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy Missing
+          </button>
+          <button onclick="checkAllVisible()" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-slate-200 transition flex items-center gap-1.5">
+            <i data-lucide="check-check" class="w-3.5 h-3.5 text-deep-emerald"></i> Check
+          </button>
+          <button onclick="uncheckAllVisible()" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-slate-200 transition flex items-center gap-1.5">
+            <i data-lucide="square" class="w-3.5 h-3.5 text-slate-400"></i> Clear
+          </button>
+          <button onclick="openResetModal()" class="px-2 py-1.5 rounded-lg bg-red-950/40 hover:bg-red-900/50 border border-red-500/30 text-xs font-semibold text-red-300 transition flex items-center gap-1" title="Reset all checklist data">
+            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- PROGRESS BAR -->
+      <div class="mt-3.5 pt-3 border-t border-deep-border">
+        <div class="flex flex-wrap items-center justify-between text-xs font-mono mb-2 gap-2">
+          <div class="flex items-center gap-2.5">
+            <span class="text-slate-400">Progress: <strong id="progressText" class="text-deep-cyan text-sm">0 / 50</strong></span>
+            <span id="q2Count" class="px-2 py-0.5 rounded bg-slate-800/80 text-slate-300">Q2: 0/25</span>
+            <span id="q3Count" class="px-2 py-0.5 rounded bg-slate-800/80 text-slate-300">Q3: 0/25</span>
+            <span id="fishTotalCount" class="hidden sm:inline-block px-2 py-0.5 rounded bg-slate-800/80 text-amber-300">Puffers: 0/393</span>
+          </div>
+          <span id="percentText" class="font-bold text-deep-emerald text-sm">0%</span>
+        </div>
+        <div class="w-full h-2 rounded-full bg-deep-bg border border-deep-border overflow-hidden">
+          <div id="progressBar" class="h-full bg-gradient-to-r from-deep-cyan via-teal-400 to-deep-emerald transition-all duration-300" style="width: 0%;"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FILTER, SORT & SEARCH CONTROLS -->
+  <main class="max-w-5xl mx-auto px-4 py-5">
+    <div class="flex flex-col gap-3 mb-5">
+      <!-- Filter Tabs -->
+      <div class="flex items-center justify-between gap-2 flex-wrap">
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 text-xs font-medium">
+          <button onclick="setFilterMode('all')" id="tabAll" class="px-3 py-1.5 rounded-lg border transition shrink-0">
+            All 50
+          </button>
+          <button onclick="setFilterMode('q2')" id="tabQ2" class="px-3 py-1.5 rounded-lg border transition shrink-0">
+            Quest 2 (25)
+          </button>
+          <button onclick="setFilterMode('q3')" id="tabQ3" class="px-3 py-1.5 rounded-lg border transition shrink-0">
+            Quest 3 (25)
+          </button>
+          <button onclick="setFilterMode('missing')" id="tabMissing" class="px-3 py-1.5 rounded-lg border transition shrink-0">
+            Missing Only
+          </button>
+          <button onclick="setFilterMode('optional')" id="tabOptional" class="px-3 py-1.5 rounded-lg border transition shrink-0 flex items-center gap-1">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i> Rod-Optional
+          </button>
+          <button onclick="setFilterMode('owned')" id="tabOwned" class="px-3 py-1.5 rounded-lg border transition shrink-0">
+            Completed
+          </button>
+        </div>
+
+        <!-- Compact View Toggle -->
+        <button onclick="toggleCompactView()" id="compactBtn" class="px-2.5 py-1.5 rounded-lg border border-deep-border bg-deep-card text-xs font-mono text-slate-300 hover:border-slate-600 transition flex items-center gap-1.5 shrink-0">
+          <i data-lucide="rows" class="w-3.5 h-3.5 text-deep-cyan"></i> <span id="compactBtnLabel">Compact: Off</span>
+        </button>
+      </div>
+
+      <!-- Second Row: Sort Controls & Search -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 bg-deep-card/70 p-2.5 rounded-xl border border-deep-border">
+        <div class="flex flex-wrap items-center gap-2">
+          <!-- Unchecked First Toggle -->
+          <button onclick="toggleUncheckedFirst()" id="uncheckedFirstBtn" class="px-3 py-1.5 rounded-lg border text-xs font-semibold transition flex items-center gap-1.5">
+            <i data-lucide="arrow-up-narrow-wide" class="w-3.5 h-3.5"></i>
+            <span id="uncheckedFirstLabel">Unchecked First: ON</span>
+          </button>
+
+          <!-- Sort Dropdown -->
+          <div class="flex items-center gap-1.5 bg-deep-bg border border-deep-border rounded-lg px-2.5 py-1">
+            <i data-lucide="list-filter" class="w-3.5 h-3.5 text-slate-400"></i>
+            <span class="text-[11px] font-mono text-slate-400">Sort:</span>
+            <select id="sortSelect" onchange="setSortBy(this.value)" class="bg-transparent text-xs font-medium text-slate-200 outline-none cursor-pointer pr-1">
+              <option value="id" class="bg-deep-card text-slate-200">Quest Order (#1 - #50)</option>
+              <option value="qty-asc" class="bg-deep-card text-slate-200">Easiest Qty (1x → 10x)</option>
+              <option value="qty-desc" class="bg-deep-card text-slate-200">Highest Qty (10x → 1x)</option>
+              <option value="optional" class="bg-deep-card text-slate-200">Rod-Optional First</option>
+              <option value="required" class="bg-deep-card text-slate-200">Rod-Required First</option>
+              <option value="alpha-target" class="bg-deep-card text-slate-200">Mutation Name (A - Z)</option>
+              <option value="alpha-rod" class="bg-deep-card text-slate-200">Rod Name (A - Z)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Search Input -->
+        <div class="relative w-full sm:w-64 shrink-0">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500"></i>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search rod, mutation, bait..." 
+            oninput="handleSearch(this.value)"
+            class="w-full bg-deep-bg border border-deep-border focus:border-deep-cyan text-xs rounded-lg pl-9 pr-8 py-1.5 outline-none text-slate-200 placeholder-slate-500 transition"
+          >
+          <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white">
+            <i data-lucide="x" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHECKLIST ITEMS -->
+    <div id="listContainer" class="space-y-2"></div>
+
+    <!-- EMPTY STATE -->
+    <div id="emptyState" class="hidden text-center py-12 px-4 border border-dashed border-deep-border rounded-xl bg-deep-card/40">
+      <i data-lucide="search-x" class="w-8 h-8 text-slate-600 mx-auto mb-2"></i>
+      <p class="text-sm text-slate-400">No entries match your active filter.</p>
+      <button onclick="resetFilters()" class="mt-3 text-xs text-deep-cyan hover:underline font-mono">Reset all filters</button>
+    </div>
+  </main>
+
+  <!-- RESET CONFIRMATION MODAL -->
+  <div id="resetModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-deep-card border border-red-500/30 rounded-xl max-w-sm w-full p-5 shadow-2xl">
+      <div class="flex items-center gap-2.5 text-red-400 mb-2">
+        <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+        <h3 class="text-base font-bold text-white">Reset Checklist?</h3>
+      </div>
+      <p class="text-xs text-slate-400 mb-5 leading-relaxed">
+        This will clear all checked rods, mutations, and individual pufferfish catch counts from your browser storage.
+      </p>
+      <div class="flex items-center justify-end gap-2 font-semibold text-xs">
+        <button onclick="closeResetModal()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition">Cancel</button>
+        <button onclick="confirmReset()" class="px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-500 text-white transition">Reset All</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 bg-deep-card border border-deep-cyan/40 text-white px-4 py-2.5 rounded-xl shadow-xl text-xs font-medium flex items-center gap-2 transition-all duration-300 opacity-0 translate-y-10 pointer-events-none">
+    <i data-lucide="check-circle" class="w-4 h-4 text-deep-cyan"></i>
+    <span id="toastText">Copied to clipboard!</span>
+  </div>
+
+  <script>
+    // HELPER: Generate clean Fischipedia wiki URL from item name
+    function getWikiUrl(title) {
+      if (!title) return 'https://fischipedia.org/wiki/Fishing_Rods';
+      // Clean string: replace spaces with underscores, encode special symbols
+      const clean = title.trim().replace(/\s+/g, '_');
+      return `https://fischipedia.org/wiki/${encodeURIComponent(clean)}`;
+    }
+
+    // STRICT WIKI-VERIFIED DATA WITH STRUCTURED ROD LINKS
+    const WIKI_DATA = [
+      // ==================== QUEST 2: Collect My Pufferfish (1 - 25) ====================
+      {
+        id: 1,
+        quest: "Q2",
+        mutation: "Wrath",
+        target: "10x Wrath Pufferfish",
+        primaryRods: [
+          { name: "Rod Of The Zenith", rate: "70%", wiki: "Rod_Of_The_Zenith" },
+          { name: "Dead Man's Rod", rate: "20%", wiki: "Dead_Man's_Rod" }
+        ],
+        altRods: [{ name: "Crimsonwrath Rod", wiki: "Crimsonwrath" }],
+        note: "Also 2% natural during Poseidon Wrath weather event",
+        rodOptional: true
+      },
+      {
+        id: 2,
+        quest: "Q2",
+        mutation: "Rotting",
+        target: "10x Rotting Pufferfish",
+        primaryRods: [
+          { name: "Splitbranch Twig", rate: "35%", wiki: "Splitbranch_Twig" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive mutation",
+        rodOptional: false
+      },
+      {
+        id: 3,
+        quest: "Q2",
+        mutation: "Exploded",
+        target: "10x Exploded Pufferfish",
+        primaryRods: [
+          { name: "The Boom Ball", rate: "50% / 100% Mastery", wiki: "The_Boom_Ball" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive minigame detonation catch",
+        rodOptional: false
+      },
+      {
+        id: 4,
+        quest: "Q2",
+        mutation: "Lost",
+        target: "10x Lost Pufferfish",
+        primaryRods: [
+          { name: "The Lost Rod", rate: "36% on Perfect Catch", wiki: "The_Lost_Rod" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive",
+        rodOptional: false
+      },
+      {
+        id: 5,
+        quest: "Q2",
+        mutation: "Celestial",
+        target: "10x Celestial Pufferfish",
+        primaryRods: [
+          { name: "Celestial Rod", rate: "After 85 fish passive", wiki: "Celestial_Rod" }
+        ],
+        altRods: [],
+        note: "Or Celestial status effect",
+        rodOptional: true
+      },
+      {
+        id: 6,
+        quest: "Q2",
+        mutation: "Sanguine",
+        target: "10x Sanguine Pufferfish",
+        primaryRods: [
+          { name: "Sanguine Spire", rate: "30%", wiki: "Sanguine_Spire" },
+          { name: "No-Life Rod", rate: "25% w/ Mastery", wiki: "No-Life_Rod" }
+        ],
+        altRods: [],
+        note: "No Rod Needed: Sacrificial Enchantment applies Sanguine based on HP%",
+        rodOptional: true
+      },
+      {
+        id: 7,
+        quest: "Q2",
+        mutation: "Crystalized",
+        target: "10x Crystalized Pufferfish",
+        primaryRods: [
+          { name: "Crystalized Rod", rate: "30%", wiki: "Crystalized_Rod" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive",
+        rodOptional: false
+      },
+      {
+        id: 8,
+        quest: "Q2",
+        mutation: "Heavenly",
+        target: "10x Heavenly Pufferfish",
+        primaryRods: [
+          { name: "Heaven's Rod", rate: "35-40%", wiki: "Heaven's_Rod" },
+          { name: "Seraphic Rod", rate: "10%", wiki: "Seraphic_Rod" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive",
+        rodOptional: false
+      },
+      {
+        id: 9,
+        quest: "Q2",
+        mutation: "Sunken",
+        target: "10x Sunken Pufferfish",
+        primaryRods: [
+          { name: "Dead Man's Rod", rate: "20%", wiki: "Dead_Man's_Rod" },
+          { name: "Sunken Rod", rate: "8-13%", wiki: "Sunken_Rod" }
+        ],
+        altRods: [],
+        note: "Rod Required (Must land Perfect Catch)",
+        rodOptional: false
+      },
+      {
+        id: 10,
+        quest: "Q2",
+        mutation: "Greedy",
+        target: "10x Greedy Pufferfish",
+        primaryRods: [
+          { name: "Rod Of The Eternal King", rate: "60%", wiki: "Rod_Of_The_Eternal_King" },
+          { name: "Dead Man's Rod", rate: "20%", wiki: "Dead_Man's_Rod" }
+        ],
+        altRods: [
+          { name: "Noctone", wiki: "Noctone" },
+          { name: "Scurvy Rod", wiki: "Scurvy_Rod" }
+        ],
+        note: "Also Champions Rod (10%) or 0.05% natural roll",
+        rodOptional: true
+      },
+      {
+        id: 11,
+        quest: "Q2",
+        mutation: "Bellona's Fury",
+        target: "10x Bellona's Fury Pufferfish",
+        primaryRods: [
+          { name: "Bellona's Waraxe", rate: "20%", wiki: "Bellona's_Waraxe" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive",
+        rodOptional: false
+      },
+      {
+        id: 12,
+        quest: "Q2",
+        mutation: "Mastered",
+        target: "10x Mastered Pufferfish",
+        primaryRods: [
+          { name: "Ruinous Oath", rate: "100% on Perfect Catch", wiki: "Ruinous_Oath" }
+        ],
+        altRods: [{ name: "Luminescent Oath", wiki: "Luminescent_Oath" }],
+        note: "Rod Exclusive",
+        rodOptional: false
+      },
+      {
+        id: 13,
+        quest: "Q2",
+        mutation: "Sandy",
+        target: "10x Sandy Pufferfish",
+        primaryRods: [
+          { name: "Sand Castle Caster", rate: "20%", wiki: "Sand_Castle_Caster" }
+        ],
+        altRods: [],
+        note: "No Rod Needed: Pharaoh's Curse Enchant (25%), Beached Enchant (10% dup), or 5% in Tropical Sun",
+        rodOptional: true
+      },
+      {
+        id: 14,
+        quest: "Q2",
+        mutation: "Rainbow Cluster",
+        target: "10x Rainbow Cluster Pufferfish",
+        primaryRods: [
+          { name: "Rainbow Cluster Rod", rate: "20% / 35% in Rainbow", wiki: "Rainbow_Cluster_Rod" }
+        ],
+        altRods: [],
+        note: "No Rod Needed: 5% natural during Rainbow weather",
+        rodOptional: true
+      },
+      {
+        id: 15,
+        quest: "Q2",
+        mutation: "Honey",
+        target: "10x Honey Pufferfish",
+        primaryRods: [
+          { name: "Sweet-Stinger", rate: "30%", wiki: "Sweet-Stinger" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive for Pufferfish",
+        rodOptional: false
+      },
+      {
+        id: 16,
+        quest: "Q2",
+        mutation: "Solarblaze",
+        target: "10x Solarblaze Pufferfish",
+        primaryRods: [
+          { name: "Wicked Fang Rod", rate: "30%", wiki: "Wicked_Fang_Rod" },
+          { name: "Fang of the Eclipse", rate: "10%", wiki: "Fang_of_the_Eclipse" }
+        ],
+        altRods: [{ name: "Phoenix Rod", wiki: "Phoenix_Rod" }],
+        note: "No Rod Needed: 10% natural during Eclipse or 90% w/ Eclipsed effect",
+        rodOptional: true
+      },
+      {
+        id: 17,
+        quest: "Q2",
+        mutation: "Siren's Spite",
+        target: "10x Siren's Spite Pufferfish",
+        primaryRods: [
+          { name: "Evil Pitchfork", rate: "25%", wiki: "Evil_Pitchfork" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive (from Evil Pitchfork)",
+        rodOptional: false
+      },
+      {
+        id: 18,
+        quest: "Q2",
+        mutation: "Hexed",
+        target: "10x Hexed Pufferfish",
+        primaryRods: [
+          { name: "No-Life Rod", rate: "50%", wiki: "No-Life_Rod" },
+          { name: "Rod Of The Depths", rate: "15%", wiki: "Rod_Of_The_Depths" }
+        ],
+        altRods: [],
+        note: "No Specific Rod Needed: 0.55% natural catch (boost with Mutated enchant)",
+        rodOptional: true
+      },
+      {
+        id: 19,
+        quest: "Q2",
+        mutation: "Toxic",
+        target: "10x Toxic Pufferfish",
+        primaryRods: [
+          { name: "Toxic Spire Rod", rate: "25%", wiki: "Toxic_Spire_Rod" },
+          { name: "Toxinburst Rod", rate: "15%", wiki: "Toxinburst_Rod" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive",
+        rodOptional: false
+      },
+      {
+        id: 20,
+        quest: "Q2",
+        mutation: "Brined",
+        target: "10x Brined Pufferfish",
+        primaryRods: [
+          { name: "Brine-Infused Rod", rate: "50%", wiki: "Brine-Infused_Rod" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive",
+        rodOptional: false
+      },
+      {
+        id: 21,
+        quest: "Q2",
+        mutation: "Mythical",
+        target: "10x Mythical Pufferfish",
+        primaryRods: [
+          { name: "Paintbrush", rate: "50%", wiki: "Paintbrush" },
+          { name: "Mythical Rod", rate: "30-35%", wiki: "Mythical_Rod" }
+        ],
+        altRods: [{ name: "Lullaby Rod", wiki: "Lullaby" }],
+        note: "No Specific Rod Needed: 15% natural catch during Rainbow weather",
+        rodOptional: true
+      },
+      {
+        id: 22,
+        quest: "Q2",
+        mutation: "Withered",
+        target: "5x Withered Pufferfish",
+        primaryRods: [
+          { name: "Withered Spear", rate: "25%", wiki: "Withered_Spear" },
+          { name: "Decayed Rod", rate: "10%", wiki: "Decayed_Rod" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive (Reduced from 10 to 5 in v1.98.1)",
+        rodOptional: false
+      },
+      {
+        id: 23,
+        quest: "Q2",
+        mutation: "Atlantean",
+        target: "10x Atlantean Pufferfish",
+        primaryRods: [
+          { name: "Trident Rod", rate: "30%", wiki: "Trident_Rod" },
+          { name: "Trident Striker", rate: "30%", wiki: "Trident_Striker" },
+          { name: "Dead Man's Rod", rate: "20%", wiki: "Dead_Man's_Rod" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive",
+        rodOptional: false
+      },
+      {
+        id: 24,
+        quest: "Q2",
+        mutation: "Lunar",
+        target: "10x Lunar Pufferfish",
+        primaryRods: [
+          { name: "Moonlit Rod", rate: "100% in Moonlit Mirage", wiki: "Moonlit_Rod" },
+          { name: "Astral Rod", rate: "5%", wiki: "Astral_Rod" },
+          { name: "Event Horizon Rod", rate: "5%", wiki: "Event_Horizon_Rod" }
+        ],
+        altRods: [],
+        note: "No Specific Rod Needed: 5% natural during Lunar Eclipse or Moonlit Blessing",
+        rodOptional: true
+      },
+      {
+        id: 25,
+        quest: "Q2",
+        mutation: "Lucid",
+        target: "10x Lucid Pufferfish",
+        primaryRods: [
+          { name: "Lucid Rod", rate: "20% / 30% in Clear", wiki: "Lucid_Rod" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive",
+        rodOptional: false
+      },
+
+      // ==================== QUEST 3: Electric Boogaloo (26 - 50) ====================
+      {
+        id: 26,
+        quest: "Q3",
+        mutation: "Fabulous",
+        target: "10x Fabulous Pufferfish",
+        primaryRods: [
+          { name: "Fabulous Rod", rate: "49%", wiki: "Fabulous_Rod" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive",
+        rodOptional: false
+      },
+      {
+        id: 27,
+        quest: "Q3",
+        mutation: "Tryhard",
+        target: "10x Tryhard Pufferfish (Normal Catch)",
+        primaryRods: [
+          { name: "Tryhard Rod", rate: "100%", wiki: "Tryhard_Rod" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive (Normal Catch allowed since v1.97.0.4)",
+        rodOptional: false
+      },
+      {
+        id: 28,
+        quest: "Q3",
+        mutation: "Forest Spirit",
+        target: "2x Forest Spirit Pufferfish",
+        primaryRods: [
+          { name: "Spirit of the Forest", rate: "5% / 15% max spirits", wiki: "Spirit_of_the_Forest" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive (Reduced to 2x)",
+        rodOptional: false
+      },
+      {
+        id: 29,
+        quest: "Q3",
+        mutation: "Verdant",
+        target: "10x Verdant Pufferfish",
+        primaryRods: [
+          { name: "Verdant Oath", rate: "100% on Perfect Catch", wiki: "Verdant_Oath" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive",
+        rodOptional: false
+      },
+      {
+        id: 30,
+        quest: "Q3",
+        mutation: "Mossy",
+        target: "2x Mossy Pufferfish",
+        primaryRods: [
+          { name: "Elder Mossripper", rate: "15% / 100% passive", wiki: "Elder_Mossripper" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive (Reduced to 2x)",
+        rodOptional: false
+      },
+      {
+        id: 31,
+        quest: "Q3",
+        mutation: "Igneous",
+        target: "10x Igneous Pufferfish",
+        primaryRods: [
+          { name: "Igneous Rupturer", rate: "50%", wiki: "Igneous_Rupturer" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive",
+        rodOptional: false
+      },
+      {
+        id: 32,
+        quest: "Q3",
+        mutation: "Serene",
+        target: "2x Serene Pufferfish",
+        primaryRods: [
+          { name: "Polaris Serenade", rate: "25%", wiki: "Polaris_Serenade" },
+          { name: "Astraeus Serenade", rate: "13%", wiki: "Astraeus_Serenade" },
+          { name: "Duskwire", rate: "2-10%", wiki: "Duskwire" }
+        ],
+        altRods: [],
+        note: "Or Serenity status effect (10%)",
+        rodOptional: true
+      },
+      {
+        id: 33,
+        quest: "Q3",
+        mutation: "Obsidian",
+        target: "10x Obsidian Pufferfish",
+        primaryRods: [
+          { name: "Chasm-Stalker", rate: "25%", wiki: "Chasm-Stalker" }
+        ],
+        altRods: [],
+        note: "No Rod Needed: 10% using Obsidian-Bone Bait (7,500 C$ at Scoria Reach)",
+        rodOptional: true
+      },
+      {
+        id: 34,
+        quest: "Q3",
+        mutation: "Nuclear",
+        target: "10x Nuclear Pufferfish",
+        primaryRods: [
+          { name: "NilCaster", rate: "50%", wiki: "NilCaster" }
+        ],
+        altRods: [],
+        note: "No Rod Needed: 100% in immediate fallout of Nuke or Cursed Nuke",
+        rodOptional: true
+      },
+      {
+        id: 35,
+        quest: "Q3",
+        mutation: "Shady",
+        target: "10x Shady Pufferfish",
+        primaryRods: [
+          { name: "Shady Rod", rate: "35%", wiki: "Shady_Rod" }
+        ],
+        altRods: [],
+        note: "No Rod Needed: 25% using Shady Larva bait or 100% in Shady Nuke fallout",
+        rodOptional: true
+      },
+      {
+        id: 36,
+        quest: "Q3",
+        mutation: "Spirit",
+        target: "5x Spirit Pufferfish",
+        primaryRods: [
+          { name: "Spiritbinder", rate: "10% / 100% passive", wiki: "Spiritbinder" },
+          { name: "Tranquility Rod", rate: "15%", wiki: "Tranquility_Rod" },
+          { name: "SOULREAPER", rate: "100% passive", wiki: "SOULREAPER" }
+        ],
+        altRods: [],
+        note: "Also 0.05% Natural catch (Reduced to 5x in v1.97.0.6)",
+        rodOptional: true
+      },
+      {
+        id: 37,
+        quest: "Q3",
+        mutation: "Blue Moon",
+        target: "2x Blue Moon Pufferfish",
+        primaryRods: [
+          { name: "Any Rod (Weather Exclusive)", rate: "10%", wiki: "Fishing_Rods" }
+        ],
+        altRods: [],
+        note: "Weather Exclusive: 10% chance fishing during a Blue Moon event",
+        rodOptional: true
+      },
+      {
+        id: 38,
+        quest: "Q3",
+        mutation: "Putrid",
+        target: "1x Putrid Pufferfish",
+        primaryRods: [
+          { name: "Putrid Enchantment", rate: "2%", wiki: "Enchanting" },
+          { name: "Clickbait Chaser", rate: "0.1%", wiki: "Clickbait_Chaser" },
+          { name: "Him Rod", rate: "50% passive", wiki: "Him" }
+        ],
+        altRods: [],
+        note: "No Specific Rod Needed: Roll Putrid Enchantment (2%) on any rod",
+        rodOptional: true
+      },
+      {
+        id: 39,
+        quest: "Q3",
+        mutation: "Blessed",
+        target: "10x Blessed Pufferfish",
+        primaryRods: [
+          { name: "Seraphic Rod", rate: "35-50%", wiki: "Seraphic_Rod" },
+          { name: "Masterline Rod", rate: "25%", wiki: "Masterline_Rod" },
+          { name: "Destiny Rod", rate: "5-10%", wiki: "Destiny_Rod" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive",
+        rodOptional: false
+      },
+      {
+        id: 40,
+        quest: "Q3",
+        mutation: "Shiny King's Blessing",
+        target: "2x Shiny King's Blessing Pufferfish",
+        primaryRods: [
+          { name: "Poseidon Rod", rate: "10-20%", wiki: "Poseidon_Rod" },
+          { name: "Kings Rod", rate: "5%", wiki: "Kings_Rod" }
+        ],
+        altRods: [],
+        note: "Pair Poseidon/Kings Rod with Glimmering Crown (+10% Shiny) or Blessed/Glittered enchant",
+        rodOptional: false
+      },
+      {
+        id: 41,
+        quest: "Q3",
+        mutation: "Gleebous",
+        target: "10x Gleebous Pufferfish",
+        primaryRods: [
+          { name: "Blade Of Glorp", rate: "36% / 72% Mastery", wiki: "Blade_Of_Glorp" }
+        ],
+        altRods: [],
+        note: "No Rod Needed: 1.48% natural catch in specific abundances at Roslit Bay",
+        rodOptional: true
+      },
+      {
+        id: 42,
+        quest: "Q3",
+        mutation: "Shiny Harmonized",
+        target: "10x Shiny Harmonized Pufferfish",
+        primaryRods: [
+          { name: "Pinion's Aria", rate: "42-62% Harmonized + 14-22% Shiny", wiki: "Pinion's_Aria" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive",
+        rodOptional: false
+      },
+      {
+        id: 43,
+        quest: "Q3",
+        mutation: "Puritas",
+        target: "2x Puritas Pufferfish",
+        primaryRods: [
+          { name: "Onirifalx", rate: "3% / 7% Mastery", wiki: "Onirifalx" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive (Reduced to 2x in v1.97.0.6)",
+        rodOptional: false
+      },
+      {
+        id: 44,
+        quest: "Q3",
+        mutation: "Royal",
+        target: "10x Royal Pufferfish",
+        primaryRods: [
+          { name: "Royal Spear", rate: "35%", wiki: "Royal_Spear" },
+          { name: "Rod Of The Eternal King", rate: "10%", wiki: "Rod_Of_The_Eternal_King" }
+        ],
+        altRods: [],
+        note: "Or 10% w/ Royal Escort status effect",
+        rodOptional: true
+      },
+      {
+        id: 45,
+        quest: "Q3",
+        mutation: "Photical",
+        target: "2x Photical Pufferfish",
+        primaryRods: [
+          { name: "Terrotrapper", rate: "15%", wiki: "Terrotrapper" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive (Reduced to 2x)",
+        rodOptional: false
+      },
+      {
+        id: 46,
+        quest: "Q3",
+        mutation: "Oscar",
+        target: "2x Oscar Pufferfish",
+        primaryRods: [
+          { name: "Great Rod of Oscar", rate: "20%", wiki: "Great_Rod_of_Oscar" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive (Reduced to 2x)",
+        rodOptional: false
+      },
+      {
+        id: 47,
+        quest: "Q3",
+        mutation: "Gravitas",
+        target: "10x Gravitas Pufferfish",
+        primaryRods: [
+          { name: "Olympian Godbreaker", rate: "30%", wiki: "Olympian_Godbreaker" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive",
+        rodOptional: false
+      },
+      {
+        id: 48,
+        quest: "Q3",
+        mutation: "Bioluminescent",
+        target: "10x Bioluminescent Pufferfish",
+        primaryRods: [
+          { name: "Luminous Rod", rate: "10%", wiki: "Luminous_Rod" },
+          { name: "Firefly Rod", rate: "10% at Night", wiki: "Firefly_Rod" }
+        ],
+        altRods: [],
+        note: "No Rod Needed: 10% using Bio-Infused Coral Bait, or 0.634% natural in Outer/Lower Deep",
+        rodOptional: true
+      },
+      {
+        id: 49,
+        quest: "Q3",
+        mutation: "Distraught",
+        target: "10x Distraught Pufferfish",
+        primaryRods: [
+          { name: "Dreambreaker", rate: "35% Night / 25% Day", wiki: "Dreambreaker" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive",
+        rodOptional: false
+      },
+      {
+        id: 50,
+        quest: "Q3",
+        mutation: "Hades' Curse",
+        target: "2x Hades' Curse Pufferfish",
+        primaryRods: [
+          { name: "Hades' Soul-Scythe", rate: "100% Curse Meter", wiki: "Hades'_Soul-Scythe" }
+        ],
+        altRods: [],
+        note: "Rod Exclusive (Reduced to 2x)",
+        rodOptional: false
+      }
+    ].map(item => {
+      const match = item.target.match(/^(\d+)x\s+(.*)/);
+      return {
+        ...item,
+        maxQty: match ? parseInt(match[1], 10) : 10,
+        cleanName: match ? match[2] : item.target,
+        primaryRodText: item.primaryRods.map(r => r.name).join(', ')
+      };
+    });
+
+    const STORAGE_KEY = 'fisch_wiki_verified_halibut_checklist';
+    const COUNTS_KEY = 'fisch_wiki_verified_halibut_counts';
+    const PREFS_KEY = 'fisch_wiki_verified_halibut_prefs';
+
+    let checkedItems = {};
+    let itemCounts = {};
+    let filterMode = 'all'; // 'all', 'q2', 'q3', 'missing', 'optional', 'owned'
+    let sortBy = 'id';
+    let uncheckedFirst = true;
+    let compactView = false;
+    let searchQuery = '';
+
+    function loadState() {
+      try {
+        const rawChecked = localStorage.getItem(STORAGE_KEY);
+        if (rawChecked) checkedItems = JSON.parse(rawChecked) || {};
+
+        const rawCounts = localStorage.getItem(COUNTS_KEY);
+        if (rawCounts) itemCounts = JSON.parse(rawCounts) || {};
+
+        const rawPrefs = localStorage.getItem(PREFS_KEY);
+        if (rawPrefs) {
+          const prefs = JSON.parse(rawPrefs);
+          if (typeof prefs.uncheckedFirst === 'boolean') uncheckedFirst = prefs.uncheckedFirst;
+          if (typeof prefs.compactView === 'boolean') compactView = prefs.compactView;
+          if (prefs.sortBy) sortBy = prefs.sortBy;
+        }
+
+        // Sync counts
+        WIKI_DATA.forEach(item => {
+          if (checkedItems[item.id] && itemCounts[item.id] === undefined) {
+            itemCounts[item.id] = item.maxQty;
+          } else if (!checkedItems[item.id] && itemCounts[item.id] === item.maxQty) {
+            itemCounts[item.id] = 0;
+          }
+        });
+      } catch (e) {
+        checkedItems = {};
+        itemCounts = {};
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(checkedItems));
+        localStorage.setItem(COUNTS_KEY, JSON.stringify(itemCounts));
+        localStorage.setItem(PREFS_KEY, JSON.stringify({
+          uncheckedFirst,
+          compactView,
+          sortBy
+        }));
+      } catch (e) {}
+      updateControlUI();
+      updateProgress();
+      renderList();
+    }
+
+    function toggleItem(id) {
+      const item = WIKI_DATA.find(i => i.id === id);
+      if (checkedItems[id]) {
+        delete checkedItems[id];
+        itemCounts[id] = 0;
+      } else {
+        checkedItems[id] = true;
+        if (item) itemCounts[id] = item.maxQty;
+      }
+      saveState();
+    }
+
+    function adjustItemCount(event, id, delta) {
+      if (event) event.stopPropagation();
+      const item = WIKI_DATA.find(i => i.id === id);
+      if (!item) return;
+
+      const current = itemCounts[id] || 0;
+      const next = Math.max(0, Math.min(item.maxQty, current + delta));
+      itemCounts[id] = next;
+
+      if (next >= item.maxQty) {
+        checkedItems[id] = true;
+      } else {
+        delete checkedItems[id];
+      }
+      saveState();
+    }
+
+    function toggleUncheckedFirst() {
+      uncheckedFirst = !uncheckedFirst;
+      saveState();
+    }
+
+    function toggleCompactView() {
+      compactView = !compactView;
+      saveState();
+    }
+
+    function setSortBy(val) {
+      sortBy = val;
+      saveState();
+    }
+
+    function setFilterMode(mode) {
+      filterMode = mode;
+      updateControlUI();
+      renderList();
+    }
+
+    function updateControlUI() {
+      const mapping = {
+        all: 'tabAll',
+        q2: 'tabQ2',
+        q3: 'tabQ3',
+        missing: 'tabMissing',
+        optional: 'tabOptional',
+        owned: 'tabOwned'
+      };
+
+      Object.entries(mapping).forEach(([key, elId]) => {
+        const btn = document.getElementById(elId);
+        if (!btn) return;
+        if (filterMode === key) {
+          btn.className = "px-3 py-1.5 rounded-lg border bg-deep-cyan/15 border-deep-cyan text-deep-cyan font-semibold transition shrink-0 flex items-center gap-1";
+        } else {
+          btn.className = "px-3 py-1.5 rounded-lg border border-deep-border bg-deep-card text-slate-300 hover:border-slate-600 transition shrink-0 flex items-center gap-1";
+        }
+      });
+
+      const ufBtn = document.getElementById('uncheckedFirstBtn');
+      const ufLabel = document.getElementById('uncheckedFirstLabel');
+      if (ufBtn && ufLabel) {
+        ufLabel.textContent = `Unchecked First: ${uncheckedFirst ? 'ON' : 'OFF'}`;
+        ufBtn.className = uncheckedFirst
+          ? "px-3 py-1.5 rounded-lg border bg-deep-emerald/15 border-deep-emerald/40 text-deep-emerald text-xs font-semibold transition flex items-center gap-1.5"
+          : "px-3 py-1.5 rounded-lg border border-deep-border bg-deep-bg text-slate-400 hover:text-slate-200 text-xs font-semibold transition flex items-center gap-1.5";
+      }
+
+      const cBtnLabel = document.getElementById('compactBtnLabel');
+      if (cBtnLabel) {
+        cBtnLabel.textContent = `Compact: ${compactView ? 'On' : 'Off'}`;
+      }
+
+      const sortEl = document.getElementById('sortSelect');
+      if (sortEl && sortEl.value !== sortBy) {
+        sortEl.value = sortBy;
+      }
+    }
+
+    function handleSearch(val) {
+      searchQuery = val.trim().toLowerCase();
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (searchQuery.length > 0) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+      renderList();
+    }
+
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      searchQuery = '';
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+      renderList();
+    }
+
+    function resetFilters() {
+      clearSearch();
+      setFilterMode('all');
+    }
+
+    function getFilteredAndSortedItems() {
+      const filtered = WIKI_DATA.filter(item => {
+        const isChecked = !!checkedItems[item.id];
+        if (filterMode === 'q2' && item.quest !== 'Q2') return false;
+        if (filterMode === 'q3' && item.quest !== 'Q3') return false;
+        if (filterMode === 'missing' && isChecked) return false;
+        if (filterMode === 'owned' && !isChecked) return false;
+        if (filterMode === 'optional' && !item.rodOptional) return false;
+
+        if (searchQuery) {
+          const matchTarget = item.target.toLowerCase().includes(searchQuery);
+          const matchRod = item.primaryRodText.toLowerCase().includes(searchQuery);
+          const matchMutation = (item.mutation || '').toLowerCase().includes(searchQuery);
+          const matchNote = item.note.toLowerCase().includes(searchQuery);
+          return matchTarget || matchRod || matchMutation || matchNote;
+        }
+        return true;
+      });
+
+      return filtered.sort((a, b) => {
+        // 1. Primary Sort: Unchecked First
+        if (uncheckedFirst) {
+          const aChecked = !!checkedItems[a.id];
+          const bChecked = !!checkedItems[b.id];
+          if (aChecked !== bChecked) {
+            return aChecked ? 1 : -1;
+          }
+        }
+
+        // 2. Secondary Sort: Selected Criteria
+        if (sortBy === 'qty-asc') {
+          if (a.maxQty !== b.maxQty) return a.maxQty - b.maxQty;
+        } else if (sortBy === 'qty-desc') {
+          if (a.maxQty !== b.maxQty) return b.maxQty - a.maxQty;
+        } else if (sortBy === 'optional') {
+          if (a.rodOptional !== b.rodOptional) return a.rodOptional ? -1 : 1;
+        } else if (sortBy === 'required') {
+          if (a.rodOptional !== b.rodOptional) return a.rodOptional ? 1 : -1;
+        } else if (sortBy === 'alpha-target') {
+          return a.cleanName.localeCompare(b.cleanName);
+        } else if (sortBy === 'alpha-rod') {
+          return a.primaryRodText.localeCompare(b.primaryRodText);
+        }
+
+        return a.id - b.id;
+      });
+    }
+
+    function checkAllVisible() {
+      getFilteredAndSortedItems().forEach(item => {
+        checkedItems[item.id] = true;
+        itemCounts[item.id] = item.maxQty;
+      });
+      saveState();
+    }
+
+    function uncheckAllVisible() {
+      getFilteredAndSortedItems().forEach(item => {
+        delete checkedItems[item.id];
+        itemCounts[item.id] = 0;
+      });
+      saveState();
+    }
+
+    function copyMissingToClipboard() {
+      const missing = WIKI_DATA.filter(i => !checkedItems[i.id]);
+      if (missing.length === 0) {
+        showToast("All 50 requirements are completed!");
+        return;
+      }
+
+      const lines = missing.map(i => {
+        const cur = itemCounts[i.id] || 0;
+        const progressStr = cur > 0 ? ` (${cur}/${i.maxQty})` : '';
+        return `[${i.quest} #${i.id}] ${i.target}${progressStr} — Rods: ${i.primaryRodText}`;
+      });
+      const text = `Halibut Harpoon Missing Checklist (${missing.length} remaining):\n` + lines.join('\n');
+
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+
+      showToast(`Copied ${missing.length} missing items!`);
+    }
+
+    let toastTimer;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastText = document.getElementById('toastText');
+      if (!toast || !toastText) return;
+      clearTimeout(toastTimer);
+      toastText.textContent = msg;
+      toast.classList.remove('opacity-0', 'translate-y-10');
+      toastTimer = setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-10');
+      }, 2400);
+    }
+
+    function openResetModal() {
+      document.getElementById('resetModal').classList.remove('hidden');
+    }
+
+    function closeResetModal() {
+      document.getElementById('resetModal').classList.add('hidden');
+    }
+
+    function confirmReset() {
+      checkedItems = {};
+      itemCounts = {};
+      closeResetModal();
+      saveState();
+      showToast("Checklist reset");
+    }
+
+    function updateProgress() {
+      const total = WIKI_DATA.length;
+      const done = Object.keys(checkedItems).length;
+      const pct = Math.round((done / total) * 100);
+
+      const q2Done = WIKI_DATA.filter(i => i.quest === 'Q2' && checkedItems[i.id]).length;
+      const q3Done = WIKI_DATA.filter(i => i.quest === 'Q3' && checkedItems[i.id]).length;
+
+      let totalPuffersCaught = 0;
+      let totalPuffersReq = 0;
+      WIKI_DATA.forEach(i => {
+        totalPuffersReq += i.maxQty;
+        totalPuffersCaught += checkedItems[i.id] ? i.maxQty : (itemCounts[i.id] || 0);
+      });
+
+      document.getElementById('progressText').textContent = `${done} / ${total}`;
+      document.getElementById('percentText').textContent = `${pct}%`;
+      document.getElementById('progressBar').style.width = `${pct}%`;
+      document.getElementById('q2Count').textContent = `Q2: ${q2Done}/25`;
+      document.getElementById('q3Count').textContent = `Q3: ${q3Done}/25`;
+      const fishTotalEl = document.getElementById('fishTotalCount');
+      if (fishTotalEl) {
+        fishTotalEl.textContent = `Puffers: ${totalPuffersCaught}/${totalPuffersReq}`;
+      }
+    }
+
+    function renderList() {
+      const container = document.getElementById('listContainer');
+      const empty = document.getElementById('emptyState');
+      const items = getFilteredAndSortedItems();
+
+      if (items.length === 0) {
+        container.innerHTML = '';
+        empty.classList.remove('hidden');
+        return;
+      }
+
+      empty.classList.add('hidden');
+      container.innerHTML = items.map(item => {
+        const isChecked = !!checkedItems[item.id];
+        const isQ2 = item.quest === 'Q2';
+        const currentQty = isChecked ? item.maxQty : (itemCounts[item.id] || 0);
+        const mutationWikiUrl = getWikiUrl(item.mutation || item.cleanName);
+
+        // Render clickable badges for each primary rod
+        const rodPillsHtml = item.primaryRods.map(rod => {
+          const url = rod.wiki ? `https://fischipedia.org/wiki/${rod.wiki}` : getWikiUrl(rod.name);
+          return `
+            <a 
+              href="${url}" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              onclick="event.stopPropagation();"
+              class="rod-link-pill inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-deep-bg/90 hover:bg-slate-800 border border-deep-cyan/30 text-deep-cyan hover:text-white text-xs font-mono font-medium"
+              title="View ${rod.name} on Fischipedia"
+            >
+              <i data-lucide="compass" class="w-3 h-3 text-deep-cyan"></i>
+              <span>${rod.name}</span>
+              ${rod.rate ? `<span class="text-[10px] text-slate-400 font-sans">(${rod.rate})</span>` : ''}
+              <i data-lucide="external-link" class="w-3 h-3 opacity-60"></i>
+            </a>
+          `;
+        }).join('');
+
+        // Render any alt rods if applicable
+        const altRodsHtml = (item.altRods && item.altRods.length > 0) ? item.altRods.map(rod => {
+          const url = rod.wiki ? `https://fischipedia.org/wiki/${rod.wiki}` : getWikiUrl(rod.name);
+          return `
+            <a 
+              href="${url}" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              onclick="event.stopPropagation();"
+              class="rod-link-pill inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-deep-bg/60 hover:bg-slate-800 border border-deep-border hover:border-slate-500 text-slate-300 hover:text-white text-[11px] font-mono"
+              title="Alternative Rod: ${rod.name}"
+            >
+              <span>${rod.name}</span>
+              <i data-lucide="external-link" class="w-2.5 h-2.5 opacity-60"></i>
+            </a>
+          `;
+        }).join('') : '';
+
+        return `
+          <div 
+            onclick="toggleItem(${item.id})"
+            class="group cursor-pointer select-none rounded-xl ${compactView ? 'p-2.5 sm:px-3.5 sm:py-2.5' : 'p-3.5 sm:p-4'} border transition-all duration-150 flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${
+              isChecked 
+                ? 'bg-deep-card/35 border-deep-emerald/25 opacity-60' 
+                : 'bg-deep-card border-deep-border hover:border-slate-600 hover:bg-deep-hover'
+            }"
+          >
+            <div class="flex items-start gap-3 flex-1 min-w-0">
+              <!-- Checkbox -->
+              <div class="mt-0.5 w-5 h-5 rounded flex items-center justify-center border transition shrink-0 ${
+                isChecked 
+                  ? 'bg-deep-emerald border-emerald-400 text-deep-bg font-bold' 
+                  : 'bg-deep-bg border-slate-600 group-hover:border-deep-cyan'
+              }">
+                ${isChecked ? `<i data-lucide="check" class="w-3.5 h-3.5 stroke-[3]"></i>` : ''}
+              </div>
+
+              <!-- Main Card Content -->
+              <div class="min-w-0 flex-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase ${
+                    isQ2 
+                      ? 'bg-deep-cyan/10 text-deep-cyan border border-deep-cyan/25' 
+                      : 'bg-deep-purple/15 text-purple-300 border border-deep-purple/30'
+                  }">
+                    #${item.id} • ${item.quest}
+                  </span>
+
+                  <!-- Target Name with Direct Mutation Wiki Link -->
+                  <div class="flex items-center gap-1.5">
+                    <h3 class="text-sm font-bold text-white transition-colors ${isChecked ? 'line-through text-slate-400' : 'group-hover:text-slate-100'}">
+                      ${item.target}
+                    </h3>
+                    <a 
+                      href="${mutationWikiUrl}" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      onclick="event.stopPropagation();"
+                      class="text-slate-400 hover:text-deep-cyan transition p-0.5 rounded"
+                      title="Open '${item.mutation}' Mutation Wiki Entry"
+                    >
+                      <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                  </div>
+
+                  ${item.rodOptional ? `
+                    <span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-medium bg-amber-500/10 text-amber-300 border border-amber-500/25">
+                      Rod-Optional / Alt
+                    </span>
+                  ` : `
+                    <span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-medium bg-slate-800 text-slate-400 border border-slate-700">
+                      Rod Required
+                    </span>
+                  `}
+                </div>
+
+                <!-- Primary Rod Clickable Badges -->
+                <div class="flex flex-wrap items-center gap-1.5 ${compactView ? 'mt-1' : 'mt-2'}">
+                  <span class="text-xs text-slate-400 font-mono">Primary Rods:</span>
+                  ${rodPillsHtml}
+                  ${altRodsHtml}
+                </div>
+
+                <!-- Wiki Note & Alternatives (Hidden in compact view) -->
+                ${!compactView ? `
+                  <div class="text-[11px] text-slate-400 mt-1.5 font-mono leading-relaxed">
+                    <span class="text-slate-500">Wiki Note:</span> ${item.note}
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+
+            <!-- Right Controls: Catch Counter & Status -->
+            <div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+              <!-- Individual Catch Counter -->
+              <div class="flex items-center bg-deep-bg border border-deep-border rounded-lg p-0.5 font-mono text-xs" onclick="event.stopPropagation()">
+                <button 
+                  onclick="adjustItemCount(event, ${item.id}, -1)" 
+                  class="w-6 h-6 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition flex items-center justify-center font-bold"
+                  title="Decrease caught count"
+                >-</button>
+                <span class="px-2 text-[11px] font-bold ${currentQty > 0 && !isChecked ? 'text-amber-300' : (isChecked ? 'text-deep-emerald' : 'text-slate-400')}">
+                  ${currentQty}/${item.maxQty}
+                </span>
+                <button 
+                  onclick="adjustItemCount(event, ${item.id}, 1)" 
+                  class="w-6 h-6 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition flex items-center justify-center font-bold"
+                  title="Increase caught count"
+                >+</button>
+              </div>
+
+              <!-- Status Badge -->
+              <span class="px-2.5 py-1 rounded text-[11px] font-mono font-bold uppercase transition ${
+                isChecked 
+                  ? 'bg-deep-emerald/15 text-deep-emerald border border-deep-emerald/30' 
+                  : 'bg-deep-bg text-slate-400 border border-deep-border group-hover:border-slate-700'
+              }">
+                ${isChecked ? 'Done' : 'Missing'}
+              </span>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadState();
+      updateControlUI();
+      updateProgress();
+      renderList();
+    });
+  </script>
+</body>
+</html>
